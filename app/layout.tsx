@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Nav from "./components/nav";
+
+import { useSelector, useDispatch, Provider } from "react-redux";
+import { store } from "@/lib/store";
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Provider store={store}>
+      <body>
+        <Nav/>
+        <main className={inter.className}>{children}</main>
+      </body>
+      </Provider>
     </html>
   );
 }
