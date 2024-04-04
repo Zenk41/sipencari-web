@@ -1,5 +1,5 @@
 {
-  "name": "intro-redux",
+  "name": "sipencari-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@reduxjs/toolkit": "^2.2.3",
+    "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "typescript": "^5",
