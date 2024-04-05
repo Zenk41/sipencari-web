@@ -1,10 +1,11 @@
-"use client";
+"use client"
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
-import { useDispatch } from "react-redux";
-import { toggleMode } from "@/lib/slices/uiSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from '@/lib/store';
+import { toggleMode } from '@/lib/slices/uiSlice';
 
 interface NavProps {}
 
@@ -43,33 +44,27 @@ export function NavList({ rounded }: NavListProps) {
   );
 }
 
-export function SwitchMode({}) {
-  const [enabled, setEnabled] = useState(false);
-  const dispatch = useDispatch();
-  
-  const toggleModeHandler = () => {
-    dispatch(toggleMode());
-  };
+export const SwitchMode = () => {
+  const dispatch: AppDispatch = useDispatch<AppDispatch>()
+  const darkMode = useSelector((state: RootState) => state.ui.darkMode)
   return (
     <Switch.Group>
       <div className="flex items-center">
         <Switch
-          checked={enabled}
-          onChange={toggleModeHandler}
-          className={`${
-            enabled ? "bg-black" : "bg-gray-200"
-          } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2`}
+          checked={darkMode}
+          onChange={() => dispatch(toggleMode())}
+          className={`${darkMode ? 'bg-black' : 'bg-gray-200'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2`}
         >
-          {enabled ? (
+          {darkMode ? (
             <MdDarkMode
               className={`${
-                enabled ? "translate-x-6" : "translate-x-1"
+                darkMode ? 'translate-x-6' : 'translate-x-1'
               } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
             />
           ) : (
             <CiLight
               className={`${
-                enabled ? "translate-x-6" : "translate-x-1"
+                darkMode ? 'translate-x-6' : 'translate-x-1'
               } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
             />
           )}
@@ -77,4 +72,4 @@ export function SwitchMode({}) {
       </div>
     </Switch.Group>
   );
-}
+};
