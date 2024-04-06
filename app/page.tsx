@@ -1,10 +1,99 @@
-import Nav from "./components/nav";
 import Post from "./components/post";
 
 export default function Home() {
   return (
-    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex ">
+    <div>
+      <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
       <Post size="x-small" />
     </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    <div className="flex space-x-2 p-2 justify-evenly content-center my-5">
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+      <Post size="x-small" />
+    </div>
+    </div>
+
   );
 }

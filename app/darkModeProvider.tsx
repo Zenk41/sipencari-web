@@ -3,6 +3,7 @@ import { RootState } from "@/lib/store";
 import { useSelector } from "react-redux";
 import Nav from "./components/nav";
 import { Inter } from "next/font/google";
+import Header from "./components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,15 +16,13 @@ export default function DarkModeProvider({
   return (
     <html
       lang="en"
-      className={`${
-        darkMode ? "dark" : ""
-      } flex min-h-screen flex-col items-center justify-between p-24 ${
+      className={`${darkMode ? "dark" : ""} justify-between p-2 ${
         inter.className
       }`}
     >
-      <body className="dark:bg-black">
-        <Nav />
-        <main>{children}</main>
+      <body className="dark:bg-black max-w-screen-xl m-auto">
+        <Header />
+        <main className="p-5">{children}</main>
       </body>
     </html>
   );

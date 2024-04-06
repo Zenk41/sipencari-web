@@ -1,27 +1,28 @@
-"use client"
-import { Switch } from "@headlessui/react";
-import { useState } from "react";
-import { MdDarkMode } from "react-icons/md";
-import { CiLight } from "react-icons/ci";
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '@/lib/store';
-import { toggleMode } from '@/lib/slices/uiSlice';
+import Link from "next/link";
 
 interface NavProps {}
 
 export default function Nav({}: NavProps) {
   return (
     <nav className="flex space-x-2">
-      <NavList rounded="medium" />
-      <SwitchMode />
+      <NavList
+        rounded="medium"
+        list={[
+          { href: "/", name: "Home" },
+          { href: "/post", name: "Post" },
+        ]}
+        size="x-small"
+      />
     </nav>
   );
 }
 interface NavListProps {
   rounded?: "small" | "medium" | "large";
+  size?: "x-small" | "small" | "medium" | "large";
+  list: { href: string; name: string }[];
 }
 
-export function NavList({ rounded }: NavListProps) {
+export function NavList({ rounded, size, list }: NavListProps) {
   const round =
     rounded === "large"
       ? "rounded-lg"
@@ -30,46 +31,23 @@ export function NavList({ rounded }: NavListProps) {
       : rounded === "small"
       ? "rounded-sm"
       : "";
+  const sizeList =
+    size === "large"
+      ? "text-lg"
+      : size === "medium"
+      ? "text-md"
+      : size === "small"
+      ? "text-sm"
+      : "text-xs";
   return (
     <ul
-      className={`${
-        round ? round : ""
-      } flex space-x-2 border bg-slate-50 w-fit p-1`}
+      className={`${round ? round : ""} ${
+        sizeList ? sizeList : ""
+      } space-x-2 hidden sm:flex items-center justify-center bg-slate-50 w-fit p-1 h-fit`}
     >
-      <div>Home</div>
-      <div>Post</div>
-      <div>Lest</div>
-      <div>Lest</div>
+      {list.map((l) => (
+        <Link href={l.href}>{l.name}</Link>
+      ))}
     </ul>
   );
 }
-
-export const SwitchMode = () => {
-  const dispatch: AppDispatch = useDispatch<AppDispatch>()
-  const darkMode = useSelector((state: RootState) => state.ui.darkMode)
-  return (
-    <Switch.Group>
-      <div className="flex items-center">
-        <Switch
-          checked={darkMode}
-          onChange={() => dispatch(toggleMode())}
-          className={`${darkMode ? 'bg-black' : 'bg-gray-200'} relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2`}
-        >
-          {darkMode ? (
-            <MdDarkMode
-              className={`${
-                darkMode ? 'translate-x-6' : 'translate-x-1'
-              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
-            />
-          ) : (
-            <CiLight
-              className={`${
-                darkMode ? 'translate-x-6' : 'translate-x-1'
-              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
-            />
-          )}
-        </Switch>
-      </div>
-    </Switch.Group>
-  );
-};
